@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fatimah Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f8e7e7;
+      color: #4a1c1c;
+      scroll-behavior: smooth;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #9c3a3a, #cc6060);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #7b2e2e;
+      margin-top: 0;
+      font-weight: 600;
+      font-style: italic;
+    }
+    .projects-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      padding: 0 1rem;
+    }
+    .project-card {
+      background: #fff0f0;
+      border: 2px solid #9c3a3a;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 15px rgba(156, 58, 58, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(156, 58, 58, 0.5);
+      border-color: #cc6060;
+    }
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #7b2e2e;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #cc6060;
+      padding-bottom: 0.3rem;
+    }
+    .project-description {
+      font-size: 1.05rem;
+      color: #6b2a2a;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .gallery a {
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 3px solid transparent;
+      box-shadow: 0 2px 5px rgba(156, 58, 58, 0.15);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery a:hover {
+      border-color: #cc6060;
+      box-shadow: 0 4px 10px rgba(204, 96, 96, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+    .gallery img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      cursor: pointer;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      text-align: center;
+      margin-top: 5rem;
+      color: #a07c7c;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      font-style: italic;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .gallery img {
+        width: 90px;
+        height: 60px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Lightbox styles */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease;
+    }
+    #lightbox.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #lightbox-img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 20px rgba(255,255,255,0.8);
+      border-radius: 8px;
+      user-select: none;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      z-index: 10000;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Nur Fatimah Hanapi</h1>
+  <p>Web Developer & UI/UX Designer</p>
+</header>
+
+<section class="projects-grid">
+  <article class="project-card">
+    <h2 class="project-title">Corrosion Recognition</h2>
+    <p class="project-description">
+      Developed interactive wireframes prototype and user interface designs using Figma, emphasizing usability and aesthetics.
+    </p>
+    <div class="gallery">
+      <a href="images/corro1.png" class="lightbox-trigger" aria-label="View Corrosion Prototype Wireframe 1 full size">
+        <img src="images/corro1.png" alt="Corrosion Prototype Wireframe 1" />
+      </a>
+      <a href="images/corro2.png" class="lightbox-trigger" aria-label="View Corrosion Prototype Wireframe 2 full size">
+        <img src="images/corro2.png" alt="Corrosion Prototype Wireframe 2" />
+      </a>
+      <a href="images/corro3.png" class="lightbox-trigger" aria-label="View Corrosion Prototype Wireframe 3 full size">
+        <img src="images/corro3.png" alt="Corrosion Prototype Wireframe 3" />
+      </a>
+      <a href="images/corro4.png" class="lightbox-trigger" aria-label="View Corrosion Prototype Wireframe 4 full size">
+        <img src="images/corro4.png" alt="Corrosion Prototype Wireframe 4" />
+      </a>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <h2 class="project-title">Emotion Regulation Game</h2>
+    <p class="project-description">
+      Designed engaging and user-friendly game interfaces utilizing Figma to enhance player experience and interaction.
+    </p>
+    <div class="gallery">
+      <a href="images/game1.png" class="lightbox-trigger" aria-label="View Emotion Regulation Game UI 1 full size">
+        <img src="images/game1.png" alt="Emotion Regulation Game UI 1" />
+      </a>
+      <a href="images/game2.png" class="lightbox-trigger" aria-label="View Emotion Regulation Game UI 2 full size">
+        <img src="images/game2.png" alt="Emotion Regulation Game UI 2" />
+      </a>
+      <a href="images/game3.png" class="lightbox-trigger" aria-label="View Emotion Regulation Game UI 3 full size">
+        <img src="images/game3.png" alt="Emotion Regulation Game UI 3" />
+      </a>
+      <a href="images/game4.png" class="lightbox-trigger" aria-label="View Emotion Regulation Game UI 4 full size">
+        <img src="images/game4.png" alt="Emotion Regulation Game UI 4" />
+      </a>
+    </div>
+  </article>
+  
+  <article class="project-card">
+    <h2 class="project-title">Library Browser</h2>
+    <p class="project-description">
+      Created responsive web layouts and styling with CSS to deliver a seamless browsing experience.
+    </p>
+    <div class="gallery">
+      <a href="images/lib1.png" class="lightbox-trigger" aria-label="View Library Browser Design 1 full size">
+        <img src="images/lib1.png" alt="Library Browser Design 1" />
+      </a>
+      <a href="images/lib2.png" class="lightbox-trigger" aria-label="View Library Browser Design 2 full size">
+        <img src="images/lib2.png" alt="Library Browser Design 2" />
+      </a>
+      <a href="images/lib3.png" class="lightbox-trigger" aria-label="View Library Browser Design 3 full size">
+        <img src="images/lib3.png" alt="Library Browser Design 3" />
+      </a>
+      <a href="images/lib4.png" class="lightbox-trigger" aria-label="View Library Browser Design 4 full size">
+        <img src="images/lib4.png" alt="Library Browser Design 4" />
+      </a>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <h2 class="project-title">Festival Poster Design</h2>
+    <p class="project-description">
+      Crafted visually compelling posters using Adobe Illustrator to effectively promote festival events.
+    </p>
+    <div class="gallery">
+      <a href="images/pos1.png" class="lightbox-trigger" aria-label="View Festival Poster 1 full size">
+        <img src="images/pos1.png" alt="Festival Poster 1" />
+      </a>
+      <a href="images/pos2.png" class="lightbox-trigger" aria-label="View Festival Poster 2 full size">
+        <img src="images/pos2.png" alt="Festival Poster 2" />
+      </a>
+      <a href="images/pos3.png" class="lightbox-trigger" aria-label="View Festival Poster 3 full size">
+        <img src="images/pos3.png" alt="Festival Poster 3" />
+      </a>
+      <a href="images/pos4.png" class="lightbox-trigger" aria-label="View Festival Poster 4 full size">
+        <img src="images/pos4.png" alt="Festival Poster 4" />
+      </a>
+    </div>
+  </article>
+
+  <article class="project-card">
+    <h2 class="project-title">Video Editing Projects</h2>
+    <p class="project-description">
+      Edited and produced high-quality video content using CapCut, enhancing storytelling and visual impact.
+    </p>
+    <div class="gallery">
+      <a href="images/vid1.png" class="lightbox-trigger" aria-label="View Video Editing Project 1 full size">
+        <img src="images/vid1.png" alt="Video Editing Project 1" />
+      </a>
+      <a href="images/vid2.png" class="lightbox-trigger" aria-label="View Video Editing Project 2 full size">
+        <img src="images/vid2.png" alt="Video Editing Project 2" />
+      </a>
+    </div>
+  </article>
+</section>
+
+<footer>
+  &copy; 2025 Nur Fatimah Hanapi. All rights reserved.
+</footer>
+
+<!-- Lightbox overlay -->
+<div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-labelledby="lightbox-img">
+  <span id="lightbox-close" role="button" aria-label="Close">&times;</span>
+  <img id="lightbox-img" src="" alt="Full Size Image" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('.lightbox-trigger').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const imgSrc = link.getAttribute('href');
+      lightboxImg.src = imgSrc;
+      lightbox.classList.remove('hidden');
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+    lightboxImg.src = '';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    }
+  });
+</script>
+
+</body>
+</html>
